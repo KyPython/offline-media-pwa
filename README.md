@@ -338,3 +338,4 @@ For issues or questions:
 3. Check service worker status in DevTools
 4. Verify Rails API is accessible and responding
 
+Deployment trigger Thu Dec  4 23:39:17 EST 2025
