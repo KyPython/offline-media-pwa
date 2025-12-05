@@ -1,0 +1,33 @@
+services:
+  - type: web
+    name: offline-media-pwa
+    env: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    headers:
+      - path: /service-worker.js
+        name: Service-Worker-Allowed
+        value: /
+      - path: /service-worker.js
+        name: Cache-Control
+        value: public, max-age=0, must-revalidate
+      - path: /*.js
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /*.css
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /*.png
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /*.jpg
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /*.webmanifest
+        name: Cache-Control
+        value: public, max-age=86400
+

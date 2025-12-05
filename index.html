@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Offline-first PWA for media sync">
+  <title>Offline Media PWA</title>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="stylesheet" href="/src/styles.css">
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>Offline Media PWA</h1>
+      <div id="connection-status" class="status-indicator">
+        <span id="status-text">Checking connection...</span>
+        <span id="sync-status" class="sync-badge"></span>
+      </div>
+    </header>
+
+    <main>
+      <section id="upload-section" class="card">
+        <h2>Create Submission</h2>
+        <form id="submission-form">
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" required>
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" name="description" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="media-files">Photos/Videos</label>
+            <input type="file" id="media-files" name="media" multiple accept="image/*,video/*">
+            <small>Select one or more photos or videos</small>
+          </div>
+          <button type="submit" id="submit-btn">Create Submission</button>
+        </form>
+      </section>
+
+      <section id="submissions-section" class="card">
+        <h2>Submissions</h2>
+        <div id="submissions-list" class="submissions-list">
+          <p class="empty-state">No submissions yet. Create one above!</p>
+        </div>
+      </section>
+
+      <section id="sync-queue-section" class="card">
+        <h2>Sync Queue</h2>
+        <div id="queue-info">
+          <p>Pending uploads: <span id="queue-count">0</span></p>
+          <button id="sync-now-btn" class="secondary">Sync Now</button>
+        </div>
+        <div id="queue-list" class="queue-list"></div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
+
