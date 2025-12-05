@@ -11,6 +11,12 @@ export default defineConfig({
       injectManifest: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg,webmanifest}']
       },
+      // Ensure service worker works in production
+      workbox: {
+        cleanupOutdatedCaches: true,
+        skipWaiting: true,
+        clientsClaim: true
+      },
       manifest: {
         name: 'Offline Media PWA',
         short_name: 'MediaPWA',
